@@ -19,8 +19,8 @@ skupper init
 ## Step 2: Install Skupper in a private site enabling the console
 Private 1 namespace
 ``` 
-kubectl apply -f frontend/kubernetes.yaml
-skupper init --enable-flow-collector --enable-console --console-user admin --console-password 1234
+kubectl apply -f private1-cluster/deployment-ms-c.yaml
+skupper init --enable-flow-collector --enable-console --console-user admin --console-password 1234 --console-auth internal
 ```
 
 ## Step 3: Create tokens
@@ -90,7 +90,7 @@ kubectl get service/frontend-external
 ## Step 10: Revoke access
 Public 1 namespace
 ```
-skupper revoke-all
+skupper revoke-access
 ```
 
 ## Step 11: Debug events
