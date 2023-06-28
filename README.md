@@ -3,24 +3,25 @@
 (this demo is based on the [Multi-cluster Cloud-Native grpc (microservices) application demo](https://github.com/skupperproject/skupper-example-grpc)
 
 
-## Step 1: Install Skupper in public clusters 
+## Step 1: Install Skupper 
 Public1 namespace:
 ```
 kubectl apply -f public1-cluster/deployment-ms-a.yaml
 skupper init
 ``` 
-Public 2 namespace:
-```
-kubectl apply -f public2-cluster/deployment-ms-b.yaml
-skupper init
-```
-
-
-## Step 2: Install Skupper in a private site enabling the console
-Private 1 namespace
+Private1 namespace
 ``` 
 kubectl apply -f private1-cluster/deployment-ms-c.yaml
-skupper init --enable-flow-collector --enable-console --console-user admin --console-password 1234 --console-auth internal
+skupper init 
+```
+
+
+## Step 2: Install Skupper enabling the console
+
+Public2 namespace:
+```
+kubectl apply -f public2-cluster/deployment-ms-b.yaml
+skupper init--enable-flow-collector --enable-console --console-user admin --console-password 1234 --console-auth internal
 ```
 
 ## Step 3: Create tokens
